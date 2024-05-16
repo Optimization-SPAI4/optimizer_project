@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+let predict = 0
 const YourComponent = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -15,13 +16,14 @@ const YourComponent = () => {
       const formData = new FormData();
       formData.append('file', selectedFile);
 
-      const response = await axios.post('http://127.0.0.1:8000/predict', formData, {
+      const response = await axios.post('http://192.168.2.69:8000/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      console.log(response.data.message);
+      predict = response.data.predict 
+      console.log(predict);
+      
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -31,6 +33,7 @@ const YourComponent = () => {
     <div>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
+      <h1>{predict}</h1>
     </div>
   );
 };
