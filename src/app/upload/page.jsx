@@ -6,6 +6,7 @@ import axios from 'axios';
 let predict = 0
 const YourComponent = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [predict, setPredict] = useState(null);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -21,9 +22,7 @@ const YourComponent = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      predict = response.data.predict 
-      console.log(predict);
-      
+      setPredict(response.data.result);
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -33,7 +32,7 @@ const YourComponent = () => {
     <div>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
-      <h1>{predict}</h1>
+      {predict && <h1>{predict}</h1>}
     </div>
   );
 };
