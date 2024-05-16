@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import ArrowIndicator from "./components/Arrow"
+import Upload from "./upload/page";
 import { useState } from 'react';
 import Login from './components/Login'
 import Navbar from "./components/Navbar";
@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <Navbar/>
-      {isLoggedIn ? <ArrowIndicator /> : <Login onLogin={handleLogin} />}
+      {isLoggedIn ? <Upload /> : <Login onLogin={handleLogin} />}
     </div>
   );
 };
