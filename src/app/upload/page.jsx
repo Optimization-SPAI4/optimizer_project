@@ -6,7 +6,7 @@ import axios from 'axios';
 let predict = 0
 const YourComponent = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [predict, setPredict] = useState(null);
+  const [predict, setPredict] = useState(0);
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -32,7 +32,7 @@ const YourComponent = () => {
     <div>
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
-      {predict && <h1>{predict}</h1>}
+      <h1>{predict}</h1>
     </div>
   );
 };
