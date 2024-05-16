@@ -57,7 +57,7 @@ const Upload: React.FC = () => {
               <input type="file" onChange={handleFileChange} multiple className='file-input file-input-bordered file-input-info w-full max-w-xs' />
             </div>
             <button onClick={handleUpload} className='btn btn-outline btn-primary mt-10'>Upload</button>
-            <div className="mockup-code mt-16 font-black p-5">
+            <div className="mockup-code mt-12 font-black p-5">
               <pre><code>{predict !== null ? predict : ''}</code></pre>
             </div> 
             <h1></h1>
