@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from '../components/css/ArrowIndicator.module.css';
-import Navbar from '../components/Navbar';
 
 
 const Upload: React.FC = () => {
@@ -44,7 +43,6 @@ const Upload: React.FC = () => {
 
   return (
     <div>
-      <Navbar/>
     <div className='hero min-h-[90vh] bg-base-20'>
       <div className='hero-content text-center'>
         <div className="max-w-md">
