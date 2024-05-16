@@ -19,7 +19,7 @@ const Login = ({ onLogin }) => {
       formData.append('client_id', 'brainwave');
 
   
-      const response = await fetch('http://192.168.180.224:8000/realms/experimental/protocol/openid-connect/token?=', {
+      const response = await fetch('http://192.168.183.84:8000/realms/experimental/protocol/openid-connect/token?=', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
