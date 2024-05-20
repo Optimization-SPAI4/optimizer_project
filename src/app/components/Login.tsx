@@ -1,16 +1,20 @@
-// components/Login.js
+// components/Login.tsx
 "use client"
 import { useState } from 'react';
 import styles from './css/Login.module.css';
 
-const Login = ({ onLogin }) => {
+interface LoginProps {
+  onLogin: (accessToken: string) => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = async (event) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     try {
       const formData = new URLSearchParams();
       formData.append('username', username);
@@ -18,7 +22,6 @@ const Login = ({ onLogin }) => {
       formData.append('grant_type', 'password');
       formData.append('client_id', 'brainwave');
 
-  
       const response = await fetch('http://192.168.183.84:8000/realms/experimental/protocol/openid-connect/token?=', {
         method: 'POST',
         headers: {
@@ -27,12 +30,11 @@ const Login = ({ onLogin }) => {
         },
         body: formData,
       });
-      console.log(response)
+
       if (response.ok) {
         const data = await response.json();
         const { access_token } = data;
         onLogin(access_token); // Pass the access token to the onLogin function
-        console.log(access_token)
         setError('');
       } else {
         const { error } = await response.json();
